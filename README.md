@@ -4,7 +4,7 @@ This module is called within the `environments` module to create a new AWS VPC.
 
 ## Example Usage
 
-This module should be added to the VPC directory `environments/$ACCOUNT/$REGION/$VPC`
+These files should be added to the VPC directory `environments/$ACCOUNT/$REGION/$VPC`
 
 __main.tf__
 
