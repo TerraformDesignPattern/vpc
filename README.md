@@ -76,16 +76,24 @@ output "private_route_table_ids" {
   value = ["${module.vpc.private_route_table_ids}"]
 }
 
-output "private_subnets" {
-  value = ["${module.vpc.private_subnets}"]
+output "private_subnet_cidr_blocks" {
+  value = ["${module.vpc.private_subnet_cidr_blocks}"]
+}
+
+output "private_subnet_ids" {
+  value = ["${module.vpc.private_subnet_ids}"]
 }
 
 output "public_route_table_ids" {
   value = ["${module.vpc.public_route_table_ids}"]
 }
 
-output "public_subnets" {
-  value = ["${module.vpc.public_subnets}"]
+output "public_subnet_cidr_blocks" {
+  value = ["${module.vpc.public_subnet_cidr_blocks}"]
+}
+
+output "public_subnet_ids" {
+  value = ["${module.vpc.public_subnet_ids}"]
 }
 
 output "vpc_cidr_block" {
