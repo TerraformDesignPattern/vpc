@@ -1,3 +1,11 @@
+output "flow_log_cloudwatch_log_group_arn" {
+  value = "${aws_cloudwatch_log_group.cloudwatch_log_group.arn}"
+}
+
+output "flow_log_cloudwatch_log_stream_arn" {
+  value = "${aws_cloudwatch_log_stream.cloudwatch_log_stream.arn}"
+}
+
 output "internet_gateway_id" {
   value = "${aws_internet_gateway.internet_gateway.id}"
 }
