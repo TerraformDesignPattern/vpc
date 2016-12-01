@@ -16,11 +16,6 @@ variable "enable_dns_support" {
   default = true
 }
 
-variable "enable_nat_gateway" {
-  description = "True to provision NAT Gateways for each private network"
-  default = true
-}
-
 variable "map_public_ip_on_launch" {
   description = "True to auto-assign public IP on launch"
   default = true
