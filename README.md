@@ -13,11 +13,11 @@ module "vpc" {
   source = "git@github.com:TerraformDesignPattern/vpc.git"
 
   availability_zones = "${var.availability_zones}"
-  aws_region = "${var.aws_region}"
-  private_subnets = "${var.private_subnets}"
-  public_subnets = "${var.public_subnets}"
-  vpc_cidr = "${var.vpc_cidr}"
-  vpc_name = "${var.vpc_name}"
+  aws_region         = "${var.aws_region}"
+  private_subnets    = "${var.private_subnets}"
+  public_subnets     = "${var.public_subnets}"
+  vpc_cidr           = "${var.vpc_cidr}"
+  vpc_name           = "${var.vpc_name}"
 }
 ```
 
@@ -38,7 +38,7 @@ variable "private_subnets" {
   default = [
     "172.19.101.0/24",
     "172.19.102.0/24",
-    "172.19.103.0/24"
+    "172.19.103.0/24",
   ]
 }
 
@@ -46,7 +46,7 @@ variable "public_subnets" {
   default = [
     "172.19.1.0/24",
     "172.19.2.0/24",
-    "172.19.3.0/24"
+    "172.19.3.0/24",
   ]
 }
 
