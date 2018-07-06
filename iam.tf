@@ -1,4 +1,4 @@
-//Create Flowlog IAM Role
+# CREATE FLOWLOG IAM ROLE
 resource "aws_iam_role" "flowlog_iam_role" {
   name = "${var.vpc_name}-flowlog"
 
@@ -19,7 +19,7 @@ resource "aws_iam_role" "flowlog_iam_role" {
 EOF
 }
 
-// Create Flowlow IAM Role Policy
+# CREATE FLOWLOW IAM ROLE POLICY
 resource "aws_iam_role_policy" "flowlog_iam_role_policy" {
   name = "${var.vpc_name}-flowlog-policy"
   role = "${aws_iam_role.flowlog_iam_role.id}"

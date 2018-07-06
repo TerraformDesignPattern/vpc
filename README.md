@@ -1,10 +1,10 @@
 # VPC Module
 
-This module is called within the `environments` module to create a new AWS VPC. 
+This module is called within the `infrastructure` repository to create a new AWS VPC.
 
-## Example Usage
+## Root Module
 
-These files should be added to the VPC directory `environments/$ACCOUNT/$REGION/$VPC`
+To instantiate the module, create a root module with the following files:
 
 __main.tf__
 
@@ -12,6 +12,7 @@ __main.tf__
 module "vpc" {
   source = "git@github.com:TerraformDesignPattern/vpc.git"
 
+  aws_account        = "${var.aws_account}"
   availability_zones = "${var.availability_zones}"
   aws_region         = "${var.aws_region}"
   private_subnets    = "${var.private_subnets}"
@@ -26,36 +27,38 @@ __variables.tf__
 As a personal preference, I try to only define data in variable files. 
 
 ```
-variable "availability_zones" {
-  default = ["us-east-1b", "us-east-1c", "us-east-1d"]
-}
+variable "aws_accont" {}
 
-variable "aws_region" {
-  default = "us-east-1"
+variable "aws_region" {}
+
+variable "vpc_name" {}
+
+variable "availability_zones" {
+  default = [
+    "us-east-1b",
+    "us-east-1c",
+    "us-east-1d"
+  ]
 }
 
 variable "private_subnets" {
   default = [
-    "172.19.101.0/24",
-    "172.19.102.0/24",
-    "172.19.103.0/24",
+    "172.19.1.0/24",
+    "172.19.2.0/24",
+    "172.19.3.0/24"
   ]
 }
 
 variable "public_subnets" {
   default = [
-    "172.19.1.0/24",
-    "172.19.2.0/24",
-    "172.19.3.0/24",
+    "172.19.101.0/24",
+    "172.19.102.0/24",
+    "172.19.103.0/24"
   ]
 }
 
 variable "vpc_cidr" {
   default = "172.19.0.0/16"
-}
-
-variable "vpc_name" {
-  default = "production-us-east-1-vpc"
 }
 ```
 
@@ -64,6 +67,10 @@ __outputs.tf__
 Export the module's outputs so environment service modules can use the state data.
 
 ```
+output "availability_zones" {
+  value = "${var.availability_zones}"
+}
+
 output "internet_gateway_id" {
   value = "${module.vpc.internet_gateway_id}"
 }
@@ -102,5 +109,9 @@ output "vpc_cidr_block" {
 
 output "vpc_id" {
   value = "${module.vpc.vpc_id}"
+}
+
+output "vpc_name" {
+  value = "${var.vpc_name}"
 }
 ```

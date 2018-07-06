@@ -1,4 +1,4 @@
-// Create Private Subnet
+# CREATE PRIVATE SUBNET
 resource "aws_subnet" "private_subnet" {
   vpc_id                  = "${aws_vpc.vpc.id}"
   cidr_block              = "${var.private_subnets[count.index]}"
@@ -8,10 +8,11 @@ resource "aws_subnet" "private_subnet" {
 
   tags {
     Name = "${var.vpc_name}-private-subnet-${element(var.availability_zones, count.index)}"
+    environment_name = "${var.environment_name}"
   }
 }
 
-// Create Public Subnet
+# CREATE PUBLIC SUBNET
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = "${aws_vpc.vpc.id}"
   cidr_block              = "${var.public_subnets[count.index]}"
@@ -21,5 +22,6 @@ resource "aws_subnet" "public_subnet" {
 
   tags {
     Name = "${var.vpc_name}-public-subnet-${element(var.availability_zones, count.index)}"
+    environment_name = "${var.environment_name}"
   }
 }
